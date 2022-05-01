@@ -54,10 +54,9 @@
                         <%= form.submit "Save", class: 'btn btn-primary' %>
                         <a href="#" class="cancel btn btn-secondary">Cancel</a>
                       </div>
-                      <%= button_to 'Delete', post_element_path(@post, element), method: :delete, class: 'btn btn-danger float-right', onclick: "return confirm('Are you sure?');" %>  
                     </div>
                   <% end %>
-                  <%# <%= button_to 'Delete', post_element_path(@post, element), method: :delete, class: 'btn btn-danger', style: "float: right;", onclick: "return confirm('Are you sure?');" %>  
+                  <%= button_to 'Delete', post_element_path(@post, element), method: :delete, class: 'btn btn-danger mb-3', style: "float: right;", onclick: "return confirm('Are you sure?');" %> 
                 </div>
               </div>
             <% elsif element.image? %>
