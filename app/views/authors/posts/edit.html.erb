@@ -5,7 +5,7 @@
   }
   
   img{
-      max-width:85%;
+      max-width:90%;
   }
   .image{
     text-align: center;
@@ -16,8 +16,10 @@
   <div class="col-md-3">
     <%= link_to "Back", posts_path, class: 'btn btn-secondary mb-3' %>
     <div class="card">
+      <div class="card-header">
+        <h5 class='card-title mb-0' style="text-align:center;">Editing post</h5>
+      </div>
       <div class="card-body">
-        <h4 class='card-title'>Editing post</h4>
         <%= render "form", post: @post %>
       </div>
     </div>
@@ -34,9 +36,17 @@
       <% end %>
     </div>
     <div class="card">
-      <div class="card-body pt-5">
+      <div class="card-body pt-2">
+        <% flag = true %>
         <% @post.elements.each do |element| %>
           <% if element.persisted? %>
+            <% if flag %>
+              <div class="card-header text-end">
+                <b>Published</b> <%= time_ago_in_words(@post.created_at) unless @post.created_at.blank? %> ago
+              </div>
+              <%# <%= @post.published_at.strftime("%B %d, %Y") %>
+              <% flag = false %>
+            <% end %>
             <% if element.paragraph? %>
               <div class="mb-4 p-3 paragraph">
                 <div class="paragraph-content">
