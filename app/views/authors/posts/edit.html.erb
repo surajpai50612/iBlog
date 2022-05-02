@@ -44,7 +44,6 @@
               <div class="card-header text-end">
                 <b>Published</b> <%= time_ago_in_words(@post.created_at) unless @post.created_at.blank? %> ago
               </div>
-              <%# <%= @post.published_at.strftime("%B %d, %Y") %>
               <% flag = false %>
             <% end %>
             <% if element.paragraph? %>
@@ -61,7 +60,7 @@
                     <%= form.rich_text_area :content %>
                     <div class=" mt-3 d-flex justify-content-between">
                       <div>
-                        <%= form.submit "Save", class: 'btn btn-primary' %>
+                        <%= form.submit "Save", class: 'btn btn-success' %>
                         <a href="#" class="cancel btn btn-secondary">Cancel</a>
                       </div>
                     </div>
@@ -79,7 +78,7 @@
                 <% else %>
                   <%= form_with(model: [@post, element]) do |form| %>
                     <%= form.file_field :image %>
-                    <%= form.submit "Save", class: 'btn btn-primary' %>
+                    <%= form.submit "Save", class: 'btn btn-success' %>
                     <a href="" class="cancel btn btn-secondary">Cancel</a>
                   <% end %>
                 <% end %>

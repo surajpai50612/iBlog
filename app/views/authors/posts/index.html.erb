@@ -8,8 +8,8 @@
 </style>
 
 <h4 class='d-flex justify-content-between mb-4'>
-  <span>Posts</span>
-  <%= link_to "New post", new_post_path, class: 'btn btn-primary' %>
+  <b><span style="color:white;">Posts</span></b>
+  <%= link_to "New post", new_post_path, class: 'btn btn-success' %>
 </h4>
 
 <% @posts.each do |post| %>
@@ -23,7 +23,7 @@
             <% end %>
           </div>
           <div class="col-md-10">
-            <span class="badge bg-primary float-end">Published</span>
+            <span class="badge bg-danger float-end">Published</span>
             <h5 class='card-title text-dark mb-1'><%= post.title %></h5>
             <p class='text-secondary mb-0'><%= post.description %></p>
           </div>
@@ -32,3 +32,4 @@
     </div>
   <% end %>
 <% end %>
+
