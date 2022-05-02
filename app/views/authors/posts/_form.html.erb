@@ -21,6 +21,17 @@
     <%= form.text_area :description, class: 'form-control' %>
   </div>
 
+  <div class="form-group" style="padding-bottom:15px;">
+    <%= form.label :header_image, style: "display: block;padding-bottom:5px;" %>
+    <%= form.file_field :header_image, class: 'form-control' %>
+    <div class="mt-2">
+      <small>Current image:</small>
+      <% if post.header_image.present? %>
+        <%= image_tag(post.header_image, width: '100%', height: '150px') %>
+      <% end %>
+    </div>
+  </div>
+
   <div class="actions">
     <%= form.submit class: 'btn btn-primary w-100' %>
   </div>
