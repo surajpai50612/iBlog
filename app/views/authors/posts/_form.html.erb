@@ -12,20 +12,20 @@
   <% end %>
 
   <div class="form-group" style="padding-bottom:15px;">
-    <%= form.label :title, style: "display: block;padding-bottom:5px;" %>
+    <b><%= form.label :title, style: "display: block;padding-bottom:5px;" %></b>
     <%= form.text_field :title, class: 'form-control' %>
   </div>
 
   <div class="form-group" style="padding-bottom:15px;">
-    <%= form.label :description, style: "display: block;padding-bottom:5px;" %>
+    <b><%= form.label :description, style: "display: block;padding-bottom:5px;" %></b>
     <%= form.text_area :description, class: 'form-control' %>
   </div>
 
   <div class="form-group" style="padding-bottom:15px;">
-    <%= form.label :header_image, style: "display: block;padding-bottom:5px;" %>
+    <b><%= form.label :header_image, style: "display: block;padding-bottom:5px;" %></b>
     <%= form.file_field :header_image, class: 'form-control' %>
     <div class="mt-2">
-      <small>Current image:</small>
+      <b><small>Current image:</small></b>
       <% if post.header_image.present? %>
         <%= image_tag(post.header_image, width: '100%', height: '150px') %>
       <% end %>
