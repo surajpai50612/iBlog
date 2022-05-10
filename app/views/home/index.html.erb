@@ -5,6 +5,9 @@
     background-size: cover;
     background-position: center;
   }
+  .card-body{
+    background-color: #F5F5F5;
+  }
 </style>
 
 <h2 class='d-flex justify-content-between mt-5 mb-4'>
@@ -12,7 +15,7 @@
 </h2>
 
 <% @allPosts.each do |post| %>
-  <%= link_to "#", class: 'text-decoration-none' do %>
+  <%= link_to "/read/#{post.id}", class: 'text-decoration-none' do %>
     <div class="card mb-3 post-card">
       <div class="card-body">
         <div class="row">

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   
   get '/authors/sign_in' => 'sessions#new'
 
+  get '/read/:id' => 'home#read'
+
   scope module: 'authors' do
     resources :posts do
       resources :elements

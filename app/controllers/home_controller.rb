@@ -8,4 +8,10 @@ class HomeController < ApplicationController
       @allPosts = Post.all.order(created_at: :desc)
     end
   end  
+
+  def read
+    keyId = params[:id]
+
+    @readPost = Post.find(keyId)
+  end
 end

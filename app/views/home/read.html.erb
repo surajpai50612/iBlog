@@ -1,71 +1,36 @@
 <style>
-  .paragraph-content:hover{
-      background-color: #F0F0F0;
-      cursor: pointer;
-  }
-  
   img{
       max-width:90%;
   }
   .image{
     text-align: center;
   }
+  .card-body{
+    background-color: #F5F5F5;
+  }
 </style>
 
+<br>
+<br>
 <div class="row">
-  <div class="col-md-3">
-    <%= link_to "Back", posts_path, class: 'btn btn-secondary mb-3' %>
-    <div class="card">
-      <div class="card-header">
-        <h5 class='card-title mb-0' style="text-align:center;">Editing post</h5>
-      </div>
-      <div class="card-body">
-        <%= render "form", post: @post %>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-9">
-    <div class="mb-3">
-      <%= form_with(model: [@post, @element], html: { class: 'float-start me-2' }) do |form| %>
-        <%= form.hidden_field :element_type, value: 'paragraph' %>
-        <%= form.submit "Paragraph", class: 'btn btn-dark' %>
-      <% end %>
-      <%= form_with(model: [@post, @element]) do |form| %>
-        <%= form.hidden_field :element_type, value: 'image' %>
-        <%= form.submit "Image", class: 'btn btn-dark' %>
-      <% end %>
-    </div>
+  <div class="col-md-12">
     <div class="card">
       <div class="card-body pt-2">
         <% flag = true %>
-        <% @post.elements.each do |element| %>
+        <% @readPost.elements.each do |element| %>
           <% if element.persisted? %>
             <% if flag %>
               <div class="card-header text-end">
-                <b>Published</b> <%= time_ago_in_words(@post.created_at) unless @post.created_at.blank? %> ago
+                <b>Published</b> <%= time_ago_in_words(@readPost.created_at) unless @readPost.created_at.blank? %> ago
               </div>
               <% flag = false %>
             <% end %>
             <% if element.paragraph? %>
               <div class="mb-4 p-3 paragraph">
-                <div class="paragraph-content">
+                <div>
                   <% if element.content.present? %>
                     <%= element.content %>
-                  <% else %>
-                    Click to add content...
                   <% end %>
-                </div>
-                <div class="paragraph-form d-none">
-                  <%= form_with(model: [@post, element]) do |form| %>
-                    <%= form.rich_text_area :content %>
-                    <div class=" mt-3 d-flex justify-content-between">
-                      <div>
-                        <%= form.submit "Save", class: 'btn btn-success' %>
-                        <a href="#" class="cancel btn btn-secondary">Cancel</a>
-                      </div>
-                    </div>
-                  <% end %>
-                  <%= button_to 'Delete', post_element_path(@post, element), method: :delete, class: 'btn btn-danger mb-3', style: "float: right;", onclick: "return confirm('Are you sure?');" %> 
                 </div>
               </div>
             <% elsif element.image? %>
@@ -74,13 +39,6 @@
                   <div>
                     <%= image_tag(element.image) %>
                   </div>
-                  <%= button_to 'Delete', post_element_path(@post, element), method: :delete, class: 'btn btn-danger mt-2 float-right', style: "float: right;", onclick: "return confirm('Are you sure?');" %>  
-                <% else %>
-                  <%= form_with(model: [@post, element]) do |form| %>
-                    <%= form.file_field :image %>
-                    <%= form.submit "Save", class: 'btn btn-success' %>
-                    <a href="" class="cancel btn btn-secondary">Cancel</a>
-                  <% end %>
                 <% end %>
               </div>
             <% end %>
