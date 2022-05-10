@@ -1,0 +1,36 @@
+<style>
+  .header-img{
+    width: 100%;
+    height: 120px;
+    background-size: cover;
+    background-position: center;
+  }
+</style>
+
+<h2 class='d-flex justify-content-between mt-5 mb-4'>
+  <b>Blogs</b>
+</h2>
+
+<% @allPosts.each do |post| %>
+  <%= link_to "#", class: 'text-decoration-none' do %>
+    <div class="card mb-3 post-card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-2">
+            <% if post.header_image.present? %>
+              <div class="header-img" style="background-image: url(<%= url_for(post.header_image) %>)"></div>
+            <% end %>
+          </div>
+          <div class="col-md-10">
+            <span class="badge bg-danger float-end">Published</span>
+            <h5 class='card-title text-dark mb-1'><b><%= post.title %></b></h5>
+            <p class='text-secondary mb-0'><%= post.description %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+<br />
+<br />
+<br />
