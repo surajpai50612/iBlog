@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
-
-  devise_for :authors
-  get 'home/index'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  devise_for :authors, controllers: { sessions: 'authors/sessions', registrations: 'authors/registrations' }
 
   root to: "home#index"
+  
+  get 'home/index'
+  
+  get '/authors/sign_up' => 'registrations#new'
+  
+  get '/authors/sign_in' => 'sessions#new'
 
   scope module: 'authors' do
     resources :posts do
       resources :elements
     end
   end
-  
-  # Defines the root path route ("/")
-  # root "articles#index"
 end

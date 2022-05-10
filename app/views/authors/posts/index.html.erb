@@ -8,7 +8,7 @@
 </style>
 
 <h4 class='d-flex justify-content-between mb-4'>
-  <b><span style="color:white;">Posts</span></b>
+  <b><span>Posts</span></b>
   <%= link_to "New post", new_post_path, class: 'btn btn-success' %>
 </h4>
 
@@ -24,7 +24,7 @@
           </div>
           <div class="col-md-10">
             <span class="badge bg-danger float-end">Published</span>
-            <h5 class='card-title text-dark mb-1'><%= post.title %></h5>
+            <h5 class='card-title text-dark mb-1'><b><%= post.title %></b></h5>
             <p class='text-secondary mb-0'><%= post.description %></p>
           </div>
         </div>
