@@ -3,9 +3,18 @@ module Authors
     before_action :set_post, only: %i[ edit update destroy ]
   
     # GET /posts
+    # def index
+    #   @posts = current_author.posts
+    # end
     def index
-      @posts = current_author.posts
-    end
+      para = params[:key]
+  
+      if para != nil
+        @posts = current_author.posts.where("title LIKE ?","%"+(para.capitalize)+"%").order(created_at: :desc)
+      else
+        @posts = current_author.posts.order(created_at: :desc)
+      end
+    end  
   
     # GET /posts/new
     def new

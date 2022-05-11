@@ -14,6 +14,10 @@
           <%= button_to "LOG OUT", destroy_author_session_path, :method => :delete, class: "btn btn-danger" %>
         </li>
       </ul>
+      <form class="d-flex me-5">
+        <input class="form-control me-3" type="search" placeholder="Search" aria-label="Search" name="key" autocomplete="off">
+        <button class="btn btn-success" type="submit">Search</button>
+      </form>
     </div>
   </div>
 </nav>
