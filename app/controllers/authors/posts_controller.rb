@@ -3,9 +3,6 @@ module Authors
     before_action :set_post, only: %i[ edit update destroy ]
   
     # GET /posts
-    # def index
-    #   @posts = current_author.posts
-    # end
     def index
       para = params[:key]
   
